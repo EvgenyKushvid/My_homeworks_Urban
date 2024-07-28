@@ -1,5 +1,5 @@
 
-def send_email (message, recipient, sender = "university.help@gmail.com"):
+def send_email (message, recipient, *, sender = "university.help@gmail.com"):
     conditions = ['.com', '.net', '.ru']
     if  '@'  in recipient and '@' in sender:
         flag_post = True
