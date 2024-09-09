@@ -31,6 +31,7 @@ class Video:
     def __str__(self):
         return self.title
 
+
 class UrTube :
 
     def __init__(self):
@@ -55,18 +56,23 @@ class UrTube :
                 #print(video)
         return search_video
     def watch_video (self, video_title):
-        if self.current_user :
-            if self.current_user.age < 18:
-                print("Вам нет 18 лет, пожалуйста покиньте страницу")
-            else:
-                for video in self.videos:
-                    if video_title == video.title:
+        if self.current_user:
+            for video in self.videos:
+                if video_title == video.title :
+                    if video.adult_mode and self.current_user.age < 18:
+                        print("Вам нет 18 лет, пожалуйста покиньте страницу")
+                    else:
+                        weel = ["| ", "/ ", "--",]
                         for second in range(video.time_now +1, video.duration+1):
-                            print(f'\r{second:3}', end='')
-                            time.sleep(1)
-                        print(" End of video")
+                            for i in weel:
+                                print(f'\033[31m\r{second:3},\033[32m{i}___ {i}', end='')
+                                time.sleep(0.3)
+                        print(f'\033[0m" End of video"')
+
+
         else:
             print("Войдете в акаунт для того что бы смотреть видео")
+
 
 
     def log_in(self, nickname, password):
@@ -88,6 +94,8 @@ class UrTube :
         if new_user not in self.users:
             self.users.append(new_user)
             self.current_user = new_user
+
+
         else:
             print(f'Пользователь {nickname} уже существует')
 
