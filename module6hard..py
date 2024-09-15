@@ -79,7 +79,8 @@ class Cube(Figure):
     filled = False
 
     def __init__(self,color,*sides):
-        self._color = color
+        super().__init__(color,*sides)
+        #self._color = color
         _sides = []
         if len(sides) == 1:
             for i in range(self.sides_count):
