@@ -18,7 +18,8 @@ def custom_write(file_name, strings):
         index_pos = tuple(index_pos)
         strings_positions = dict(zip(index_pos, data))
 
-        print(*strings_positions.items(), sep='\n')
+        #print(*strings_positions.items(), sep='\n')
+        return strings_positions
 
 
 
@@ -31,6 +32,6 @@ info = [
 
 custom_write('../dop/test.txt', info)
 
-# result = custom_write('test.txt', info)
-# for elem in result.items():
-#   print(elem)
+result = custom_write('test.txt', info)
+for elem in result.items():
+  print(elem)
