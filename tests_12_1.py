@@ -15,13 +15,16 @@ class Runner:
         return self.name
 
 class RunnerTest(unittest.TestCase):
+    is_frozen = False
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk (self):
         run = Runner('run')
         for i in range(10):
             run.walk()
         self.assertEqual(run.distance,50)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run  (self):
         run = Runner('run')
         for i in range(10):
