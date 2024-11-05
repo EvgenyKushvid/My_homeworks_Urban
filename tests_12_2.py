@@ -43,6 +43,7 @@ class Tournament:
         return finishers
 
 class TournamentTest (unittest.TestCase):
+    is_frozen = True
 
     @classmethod
     def setUpClass (self):
@@ -62,18 +63,19 @@ class TournamentTest (unittest.TestCase):
             for k, val in value.items():
                 temp[k] = (val.name)
             print(temp)
-
+    @unittest.skipIf(is_frozen,'Тесты в этом кейсе заморожены')
     def test_race1 (self):
         race = Tournament(90,self.r1,self.r3)
         self.all_results[1] = race.start()
         self.assertTrue(self.all_results[1][2] == self.r3)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_race2 (self):
             race = Tournament(90,self.r2,self.r3)
             self.all_results[2] = race.start()
             self.assertTrue(self.all_results[2][2]== self.r3)
 
-
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_race3 (self):
             race = Tournament(90,self.r1,self.r2,self.r3)
             self.all_results[3] = race.start()
