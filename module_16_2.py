@@ -13,7 +13,7 @@ async def read_user_by_id(user_id:Annotated[int,Path(ge=1, le = 100, description
 
 @app.get("/user/{user_name}/{user_age}")
 async def read_user_info(user_name:Annotated[str,Path(min_length=5, max_length=20, description="Enter username", example="Vasya")]
-                ,user_age:int=Path(ge=18, le = 120, description="Enter age",example=75)) -> dict:
+                ,user_age:Annotated[int,Path(ge=18, le = 120, description="Enter age",example=75)]) -> dict:
     return {"message": f"Информация о пользователе: Имя {user_name}, Возраст {user_age}"}
 
 @app.get("/")
